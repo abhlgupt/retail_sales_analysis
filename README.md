@@ -186,7 +186,21 @@ SELECT
 FROM hourly_sale
 GROUP BY shift
 ```
-
+11. **Write a SQL query to find the number of unique customers who purchased items from all category**:
+```sql
+SELECT 
+		COUNT(DISTINCT CUSTOMER_ID)
+FROM RETAIL_SALES
+WHERE CUSTOMER_ID IN (
+SELECT CUSTOMER_ID FROM RETAIL_SALES WHERE CATEGORY = "CLOTHING"
+)
+AND CUSTOMER_ID IN (
+SELECT CUSTOMER_ID FROM RETAIL_SALES WHERE CATEGORY = "BEAUTY
+)
+AND CUSTOMER_ID IN (
+SELECT CUSTOMER_ID FROM RETAIL_SALES WHERE CATEGORY = "ELECTRONICS"
+);
+```
 ## Findings
 
 - **Customer Demographics**: The dataset includes customers from various age groups, with sales distributed across different categories such as Clothing and Beauty.
